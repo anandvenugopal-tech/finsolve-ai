@@ -5,8 +5,6 @@
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.38-red)
 ![LangChain](https://img.shields.io/badge/LangChain-0.3-orange)
 ![ChromaDB](https://img.shields.io/badge/ChromaDB-0.5-purple)
-![Gemini](https://img.shields.io/badge/Gemini-2.0--flash-blue)
-![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ---
 
@@ -50,7 +48,7 @@ ChromaDB Vector Search (department-specific)
         ↓
 Retrieved Document Chunks (context)
         ↓
-Gemini 2.0 Flash → Answer + Source References
+Ollama → Answer + Source References
         ↓
 Response displayed in Streamlit Chat UI
 ```
@@ -77,7 +75,7 @@ Response displayed in Streamlit Chat UI
 | Language | Python 3.10+ |
 | Backend API | FastAPI |
 | Frontend UI | Streamlit |
-| LLM | Google Gemini 2.0 Flash |
+| LLM | Ollama |
 | Embeddings | HuggingFace `all-MiniLM-L6-v2` |
 | Vector Store | ChromaDB |
 | RAG Framework | LangChain |
@@ -160,7 +158,6 @@ cp .env.example .env
 Edit `.env` and add your keys:
 
 ```
-GEMINI_API_KEY=AIzaSyxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 SECRET_KEY=your-random-32-character-secret-key
 CHROMA_PERSIST_DIR=./chroma_db
 ```
@@ -245,7 +242,7 @@ When a query is made, the system checks the JWT token and maps the role to allow
 - The query is converted to a vector using HuggingFace embeddings
 - ChromaDB performs similarity search on allowed collections
 - Top relevant document chunks are retrieved
-- Chunks are passed as context to Gemini 2.0 Flash
+- Chunks are passed as context to Ollama
 - Gemini generates a grounded answer citing source documents
 
 ### 4. Response
@@ -267,7 +264,6 @@ The answer is displayed in the Streamlit chat UI along with the source document 
 
 | Variable | Description | Where to Get |
 |---|---|---|
-| `GEMINI_API_KEY` | Google Gemini API key | [aistudio.google.com](https://aistudio.google.com) |
 | `SECRET_KEY` | JWT signing secret | Generate yourself |
 | `CHROMA_PERSIST_DIR` | ChromaDB storage path | Set to `./chroma_db` |
 
